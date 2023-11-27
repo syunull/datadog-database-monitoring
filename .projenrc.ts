@@ -1,4 +1,5 @@
-import { cdktf } from 'projen';
+import { cdktf, github } from 'projen';
+
 const project = new cdktf.ConstructLibraryCdktf({
   author: 'Syunull',
   authorAddress: 'syunull@users.noreply.github.com',
@@ -9,6 +10,10 @@ const project = new cdktf.ConstructLibraryCdktf({
   projenrcTs: true,
   repositoryUrl: 'https://github.com/syunull/datadog-database-monitoring.git',
   license: 'Apache-2.0',
+
+  githubOptions: {
+    projenCredentials: github.GithubCredentials.fromApp(),
+  },
 });
 
 project.addDeps('@cdktf/provider-postgresql', 'constructs');
