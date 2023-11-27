@@ -17,5 +17,5 @@ const project = new cdktf.ConstructLibraryCdktf({
 });
 
 project.addDeps('@cdktf/provider-postgresql', 'constructs');
-project.addDevDeps('publib', 'constructs');
+project.addDevDeps('constructs', 'publib');
 project.synth();
