@@ -106,6 +106,7 @@ Any object.
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#datadog-database-monitoring.DatadogMonitoring.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#datadog-database-monitoring.DatadogMonitoring.property.role">role</a></code> | <code>@cdktf/provider-postgresql.role.Role</code> | *No description.* |
 
 ---
 
@@ -118,6 +119,16 @@ public readonly node: Node;
 - *Type:* constructs.Node
 
 The tree node.
+
+---
+
+##### `role`<sup>Required</sup> <a name="role" id="datadog-database-monitoring.DatadogMonitoring.property.role"></a>
+
+```typescript
+public readonly role: Role;
+```
+
+- *Type:* @cdktf/provider-postgresql.role.Role
 
 ---
 

@@ -6,6 +6,8 @@ import { Schema } from '@cdktf/provider-postgresql/lib/schema';
 import { Construct } from 'constructs';
 
 export class DatadogMonitoring extends Construct {
+  role: Role;
+
   constructor(
     scope: Construct,
     id: string,
@@ -14,7 +16,7 @@ export class DatadogMonitoring extends Construct {
   ) {
     super(scope, id);
 
-    const dataDogRole = new Role(this, 'role', {
+    this.role = new Role(this, 'role', {
       name: 'datadog',
       inherit: true,
       roles: ['pg_monitor'],
@@ -25,7 +27,7 @@ export class DatadogMonitoring extends Construct {
     const dataDogSchema = new Schema(this, 'datadog-schema', {
       name: 'datadog',
       ifNotExists: true,
-      owner: dataDogRole.name,
+      owner: this.role.name,
       database: database,
     });
 
@@ -33,7 +35,7 @@ export class DatadogMonitoring extends Construct {
       database: database,
       privileges: ['USAGE'],
       objectType: 'schema',
-      role: dataDogRole.name,
+      role: this.role.name,
       schema: dataDogSchema.name,
       dependsOn: [dataDogSchema],
     });
@@ -42,7 +44,7 @@ export class DatadogMonitoring extends Construct {
       database: database,
       privileges: ['USAGE'],
       objectType: 'schema',
-      role: dataDogRole.name,
+      role: this.role.name,
       schema: 'public',
     });
 
