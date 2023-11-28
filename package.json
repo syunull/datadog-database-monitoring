@@ -59,6 +59,7 @@
     "typescript": "^5.3.2"
   },
   "peerDependencies": {
+    "@cdktf/provider-postgresql": "^10.0.0",
     "cdktf": "^0.19.0",
     "constructs": "^10.0.12"
   },
